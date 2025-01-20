@@ -67,20 +67,18 @@ export function myToStringFromNumber(number) {
 export function myParseIntRadix(strNum, Tradix) {
     let result = NaN;
     let flag = true;
+    let i = 0
     if ((Tradix === undefined || (Tradix > 1 && Tradix < 37)) && strNum !== "") {
         const radix = Tradix !== undefined ? Tradix : 10;
         const validChars = "0123456789abcdefghijklmnopqrstuvwxyz".slice(0, radix);
         result = 0;
-        for (const char of strNum.toLowerCase()) {
-            if(!validChars.includes(char)){
-                flag = false;
+        for (i; i < strNum.length; i++) {
+            const char = strNum[i].toLowerCase();
+            if (!validChars.includes(char)) {
+                break;
             }
-            if (validChars.includes(char)) {
-                result = result * radix + validChars.indexOf(char);
-            }
+            result = result * radix + validChars.indexOf(char);
         }
-        
     }
-    
-    return  flag ? result: NaN;
+    return flag && i>0 ? result : NaN;
 }

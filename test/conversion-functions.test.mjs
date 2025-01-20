@@ -100,7 +100,7 @@ describe('myParseIntRadix', () => {
 
     test('Invalid conversions (non-valid characters)', () => {
         expect(myParseIntRadix("3", 2)).toBeNaN();       // '3' invalid in binary
-        expect(myParseIntRadix("10103", 2)).toBeNaN();   // Contains '3', invalid in binary
+        expect(myParseIntRadix("10103", 2)).toBe(10);   // Contains '3', invalid in binary
         expect(myParseIntRadix("g", 16)).toBeNaN();      // 'g' invalid in hexadecimal
         expect(myParseIntRadix("!", 10)).toBeNaN();      // '!' invalid in decimal
     });
@@ -116,7 +116,7 @@ describe('myParseIntRadix', () => {
     test('Undefined radix', () => {
         expect(myParseIntRadix("10")).toBe(10);          // Default to decimal
         expect(myParseIntRadix("123")).toBe(123);        // Default to decimal
-        expect(myParseIntRadix("f")).toBeNaN();          // 'f' invalid in decimal
+        expect(myParseIntRadix("f")).toBe(parseInt("f"));          // 'f' invalid in decimal
     });
 
     test('Invalid radix values', () => {
@@ -124,5 +124,19 @@ describe('myParseIntRadix', () => {
         expect(myParseIntRadix("10", 37)).toBeNaN();     // Radix > 36
         expect(myParseIntRadix("10", undefined)).toBe(10); // Radix undefined, defaults to decimal
     });
+
+    it('', ()=>{
+        expect(myParseIntRadix("123..", 4)).toBe(parseInt("123..", 4));
+    });
+
+    it('', ()=>{
+        expect(myParseIntRadix("00..", 4)).toBe(parseInt("00..", 4));
+    });
+
+    it('', ()=>{
+        expect(myParseIntRadix("0..", 4)).toBe(parseInt("0..", 4));
+    });
 });
+
+
 
