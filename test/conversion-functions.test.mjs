@@ -1,5 +1,5 @@
 import {describe, it, expect, test} from 'vitest';
-import { myParseInt, myToStringFromNumber, myParseIntRadix } from '../conversion-functions.mjs';
+import { myParseInt, myToStringFromNumber, myParseIntRadix, stringShift, stringUnshift} from '../conversion-functions.mjs';
 //Unit test is AAA - Arranging / Act / Assertion
 describe("myParseInt test suit", () => {
    it("reqular string with positive integer number", () => {
@@ -8,7 +8,7 @@ describe("myParseInt test suit", () => {
         expect(res).toBe(14); //Assertion
    }) ;
    it ("reqular string with negative integer number", () => {
-    expect(myParseInt("-12")).toBe(-123);
+    expect(myParseInt("-123")).toBe(-123);
    });
    it ("string with  number following +", () => {
     expect(myParseInt("+12")).toBe(12)
@@ -137,6 +137,3 @@ describe('myParseIntRadix', () => {
         expect(myParseIntRadix("0..", 4)).toBe(parseInt("0..", 4));
     });
 });
-
-
-
