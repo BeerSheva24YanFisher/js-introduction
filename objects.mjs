@@ -10,10 +10,13 @@ person[key] = 20;
 ({name, age} = person);
 let {gender} = person
 let a;
+
 function getOccurencesObject(string) {
-    //TODO
-    //return object with data about occurrences for each character in the given string
-    //"abcadab"
-    //data should include a encountered 3 times
-    //b - two times; c and d - one time
+    const occurrences = {};
+
+    for (let char of string) {
+        occurrences[char] = (occurrences[char] || 0) + 1;
+    }
+
+    return occurrences;
 }
