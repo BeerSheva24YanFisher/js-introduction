@@ -1,5 +1,5 @@
 import {test, expect} from 'vitest';
-import  getOccurencesObject  from '../objects.mjs';
+import  getOccurencesObject  from '../arrays.mjs';
 test("getOccurencesObject with destructuring", () => {
     const str = "aaabgbgc";
     let {a, b, g, c} = getOccurencesObject(str);
