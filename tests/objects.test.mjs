@@ -1,3 +1,38 @@
+import { describe, expect, it } from "vitest";
+import { makeGeneratorClosedRange, makeIterableBasedGenerator } from "../objects.mjs";
+it("iterator test based on generator function", ()=>{
+  //
+    const iterator = makeGeneratorClosedRange(1, 3);
+    const expected = [1, 2, 3];
+    const actual = [];
+    
+    while(true) {
+        const {value, done} = iterator.next();
+        if(done) {
+          break;
+        }
+        actual.push(value)
+    }
+    expect(actual).toEqual(expected);
+});
+it("terable test based on generator function", () => {
+  const iterable = makeIterableBasedGenerator(1, 3);
+  const expected = [1, 2, 3];
+  const actual = [];
+  for (const num of iterable) {
+    actual.push(num);
+  }
+  expect(actual).toEqual(expected);
+  actual.length = 0;
+  for  (const num of iterable) {
+    actual.push(num);
+  }
+  expect(actual).toEqual(expected);
+})
+
+
+
+
 // import {test, expect} from 'vitest';
 // import  getOccurencesObject  from '../objects.mjs';
 // test("getOccurencesObject with destructuring", () => {
@@ -38,26 +73,26 @@
     
 // });
 
-import {describe, expect, it} from 'vitest';
-describe ("Object copying", () => {
+// import {describe, expect, it} from 'vitest';
+// describe ("Object copying", () => {
     
-   it("showing example of references assignment but not copy", () => {
-    const person1 = {name: "Vasya", age:25};
-     const person2 = person1;
-    person2.gender="male";
-    expect(person1.gender).toBe("male")
+//    it("showing example of references assignment but not copy", () => {
+//     const person1 = {name: "Vasya", age:25};
+//      const person2 = person1;
+//     person2.gender="male";
+//     expect(person1.gender).toBe("male")
 
-   });
+//    });
    
-   it("copying using spread operator", () => {
-    const person1 = {name: "Vasya", age:25};
-    const person2 = {...person1}
-    person2.city="Lod";
-    expect(person1.city).toBeUndefined();
-    person1.city="Lod";
-    expect(person1 != person2).toBeTruthy();
-    expect(person2).toEqual(person1);
-    expect(person2).not.toBe(person1)
-   });
+//    it("copying using spread operator", () => {
+//     const person1 = {name: "Vasya", age:25};
+//     const person2 = {...person1}
+//     person2.city="Lod";
+//     expect(person1.city).toBeUndefined();
+//     person1.city="Lod";
+//     expect(person1 != person2).toBeTruthy();
+//     expect(person2).toEqual(person1);
+//     expect(person2).not.toBe(person1)
+//    });
   
-});
+// });
